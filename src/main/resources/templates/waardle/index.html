@@ -1,16 +1,96 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<title>Frontpage</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/waardle.css">
+    <title>Wårdle</title>
 </head>
-
 <body>
-<h1>Wordle</h1>
+<header>
+    <nav>
+        <div class="left">
+            <a href="#avatr">
+                <div id="avatar"></div>
+            </a>
+            <div class="logo">
+                <h1 id="waardle">Wårdle</h1>
+            </div>
+        </div>
+        <div class="right">
+            <div id="difficulty">
+                <a href="#1drop" class="dropdown"><h4>Sværhedsgrad<img src="../../public/images/waardle/dropdown.png" alt="" class="dropdown-arrow"></h4></a>
+            </div>
+            <div id="other">
+                <a href="#2drop" class="dropdown"><h4>Andet<img src="../../public/images/waardle/dropdown.png" alt="" class="dropdown-arrow"></h4></a>
+            </div>
+            <a href="#setti">
+                <div id="settings"></div>
+            </a>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="screen">
+            <div class="rows">
+                <div class="row" id="row1">
+                    <p id="1Input"></p>
+                    <p id="2Input"></p>
+                    <p id="3Input"></p>
+                </div>
+                <div class="row" id="row2"></div>
+                <div class="row" id="row3"></div>
+                <div class="row" id="row4"></div>
+                <div class="row" id="row5"></div>
+                <div class="row" id="row6"></div>
+            </div>
+        </div>
+        <div class="keyboard">
+            <div class="buttons">
+                <div class="keyboard-rows">
+                    <div id="key-row1">
+                        <button type="button" id="q">Q</button>
+                        <button type="button" id="w">W</button>
+                        <button type="button" id="e">E</button>
+                        <button type="button" id="r">R</button>
+                        <button type="button" id="t">T</button>
+                        <button type="button" id="y">Y</button>
+                        <button type="button" id="u">U</button>
+                        <button type="button" id="i">I</button>
+                        <button type="button" id="o">O</button>
+                        <button type="button" id="p">P</button>
+                        <button type="button" id="aa">Å</button>
+                    </div>
+                    <div id="key-row2">
+                        <button type="button" id="a">A</button>
+                        <button type="button" id="s">S</button>
+                        <button type="button" id="d">D</button>
+                        <button type="button" id="f">F</button>
+                        <button type="button" id="g">G</button>
+                        <button type="button" id="h">H</button>
+                        <button type="button" id="j">J</button>
+                        <button type="button" id="k">K</button>
+                        <button type="button" id="l">L</button>
+                        <button type="button" id="ae">Æ</button>
+                        <button type="button" id="oe">Ø</button>
+                    </div>
+                    <div id="key-row3">
+                        <button type="button" id="z">Z</button>
+                        <button type="button" id="x">X</button>
+                        <button type="button" id="c">C</button>
+                        <button type="button" id="v">V</button>
+                        <button type="button" id="b">B</button>
+                        <button type="button" id="n">N</button>
+                        <button type="button" id="m">M</button>
+                        <button type="submit" id="enter">ENTER</button>
+                        <button type="reset" id="delete">DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../../public/js/waardle.js"></script>
 </body>
 </html>
