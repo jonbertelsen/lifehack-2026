@@ -17,8 +17,8 @@ public class Routes {
     public EndpointGroup getRoutes(){
         return () -> {
             get("/", ctx -> ctx.render("index.html"));
-            path("/wordle", wordleRoutes.getRoutes() );
-            path("/spinthewheel", spinTheWheelRoutes.getRoutes());
+            path("/waardle", wordleRoutes.getRoutes() );
+            path("/stw", spinTheWheelRoutes.getRoutes());
         };
     }
 }

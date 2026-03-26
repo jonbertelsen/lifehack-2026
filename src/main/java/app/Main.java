@@ -4,16 +4,15 @@ import app.config.SessionConfig;
 import app.config.ThymeleafConfig;
 import app.controllers.BmiController;
 import app.controllers.SpinTheWheelController;
-import app.controllers.WordleController;
+import app.controllers.WaardleController;
 import app.persistence.BmiMapper;
 import app.persistence.ConnectionPool;
 import app.persistence.SpinTheWheelMapper;
-import app.persistence.WordleMapper;
+import app.persistence.WaardleMapper;
 import app.routes.Routes;
 import app.routes.SpinTheWheelRoutes;
 import app.routes.WordleRoutes;
 import io.javalin.Javalin;
-import io.javalin.http.Context;
 import io.javalin.rendering.template.JavalinThymeleaf;
 
 import java.util.logging.Logger;
@@ -34,11 +33,11 @@ public class Main {
         BmiMapper bmiMapper = new BmiMapper(connectionPool);
         BmiController bmiController = new BmiController(bmiMapper);
 
-        WordleMapper wordleMapper = new WordleMapper(connectionPool);
-        WordleController wordleController = new WordleController(wordleMapper);
+        WaardleMapper wordleMapper = new WaardleMapper(connectionPool);
+        WaardleController waardleController = new WaardleController(wordleMapper);
         SpinTheWheelMapper spinTheWheelMapper = new SpinTheWheelMapper(connectionPool);
         SpinTheWheelController spinTheWheelController = new SpinTheWheelController(spinTheWheelMapper);
-        WordleRoutes wordleRoutes = new WordleRoutes(wordleController);
+        WordleRoutes wordleRoutes = new WordleRoutes(waardleController);
         SpinTheWheelRoutes spinTheWheelRoutes = new SpinTheWheelRoutes(spinTheWheelController);
 
         Routes routes = new Routes(wordleRoutes, spinTheWheelRoutes);

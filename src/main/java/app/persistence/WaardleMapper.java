@@ -1,10 +1,10 @@
 package app.persistence;
 
-public class WordleMapper {
+public class WaardleMapper {
 
     private final ConnectionPool connectionPool;
 
-    public WordleMapper(ConnectionPool connectionPool) {
+    public WaardleMapper(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
 }
