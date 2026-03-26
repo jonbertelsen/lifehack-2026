@@ -1,20 +1,20 @@
 package app.routes;
 
-import app.controllers.WordleController;
+import app.controllers.WaardleController;
 import io.javalin.apibuilder.EndpointGroup;
 import static io.javalin.apibuilder.ApiBuilder.get;
 
 public class WordleRoutes {
-    private final WordleController wordleController;
+    private final WaardleController waardleController;
 
-    public WordleRoutes(WordleController wordleController) {
-        this.wordleController = wordleController;
+    public WordleRoutes(WaardleController waardleController) {
+        this.waardleController = waardleController;
     }
 
     protected EndpointGroup getRoutes() {
 
         return () -> {
-            get("/", wordleController::getAll);
+            get("/", waardleController::getAll);
             // TODO: Add more routes when needed here
         };
     }
