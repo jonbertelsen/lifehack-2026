@@ -16,7 +16,7 @@ public class Routes {
 
     public EndpointGroup getRoutes(){
         return () -> {
-            get("/", ctx -> ctx.render("index.html"));
+            get("/", ctx -> ctx.render("signup.html"));
             path("/waardle", wordleRoutes.getRoutes() );
             path("/stw", spinTheWheelRoutes.getRoutes());
         };

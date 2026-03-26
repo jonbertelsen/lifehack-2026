@@ -15,6 +15,8 @@ public class WordleRoutes {
 
         return () -> {
             get("/", waardleController::getAll);
+            get("/login", waardleController::login);
+            get("/signup", waardleController::signup);
             // TODO: Add more routes when needed here
         };
     }
