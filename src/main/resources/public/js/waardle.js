@@ -4,7 +4,7 @@ const E = document.getElementById("e");
 
 Q.addEventListener("click", () => {
     try{
-        document.getElementById("1Input").innerHTML = "Q";
+        document.getElementById("input1").innerHTML = "Q";
     } catch (e){
         console.error("Du er lort");
     }
@@ -12,7 +12,7 @@ Q.addEventListener("click", () => {
 
 W.addEventListener("click", () => {
     try{
-        document.getElementById("2Input").innerHTML = "W";
+        document.getElementById("input2").innerHTML = "W";
     } catch (e){
         console.error("Du er lort");
     }
@@ -20,7 +20,7 @@ W.addEventListener("click", () => {
 
 E.addEventListener("click", () => {
     try{
-        document.getElementById("3Input").innerHTML = "E";
+        document.getElementById("input3").innerHTML = "E";
     } catch (e){
         console.error("Du er lort");
     }
