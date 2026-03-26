@@ -59,6 +59,10 @@ body {
     text-align: center;
 }
 
+.top-box img {
+    max-width: 380px;
+}
+
 .options {
     width: 100%;
     max-width: 320px;
