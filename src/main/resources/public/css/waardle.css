@@ -3,10 +3,19 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     padding: 50px;
     gap: 10px;
+
+
 }
 
+#loginknap, #signupknap{
+    padding: 20px;
+    width: fit-content;
+
+
+}
 :root {
     --avatar-full-width: 267px;
     --avatar-full-height: 237px;
