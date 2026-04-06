@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Start</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
@@ -11,26 +11,15 @@
 
 <body>
 <header>
-    <nav>
-        <div >
-            <a href="#avatr">
-                <div id="avatar"></div>
-            </a>
-            <div class="logo">
-                <h1 id="waardle">Wårdle</h1>
-            </div>
 
-        </div>
-    </nav>
-</header>
+<form class="login" method="post">
+    <h1> Log ind </h1>
 
+    <input type="text" name="username" placeholder="indtast brugernavn"/>
+    <input type="password" name="password" placeholder="indtast dit kodeord"/>
 
+    <button type="submit" formaction="/login"> Log ind </button>
 
-<form class="startside" method="post">
-
-    <button type="submit" id="loginknap" formaction="/login"> Log ind </button>
-    <button type="submit" id="signupknap" formaction="/signup"> Opret bruger </button>
-    <a href="" > Fortsæt som gæst </a>
 </form>
 </body>
 </html>

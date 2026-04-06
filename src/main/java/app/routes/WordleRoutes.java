@@ -14,7 +14,9 @@ public class WordleRoutes {
     protected EndpointGroup getRoutes() {
 
         return () -> {
-            get("/", waardleController::getAll);
+            get("/startside", waardleController::getAll);
+            get("/login", waardleController::login);
+            get("/signup", waardleController::signup);
             // TODO: Add more routes when needed here
         };
     }

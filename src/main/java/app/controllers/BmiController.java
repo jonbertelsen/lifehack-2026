@@ -41,10 +41,10 @@ public class BmiController {
             ctx.render("result.html");
         } catch (NumberFormatException e) {
             ctx.attribute("error", "Husk at indtaste korrekte tal for vægt og højde");
-            ctx.render("index.html");
+            ctx.render("signup.html");
         } catch(IllegalArgumentException e){
             ctx.attribute("error", e.getMessage());
-            ctx.render("index.html");
+            ctx.render("signup.html");
         }
         catch (SQLException e) {
             throw new RuntimeException(e);

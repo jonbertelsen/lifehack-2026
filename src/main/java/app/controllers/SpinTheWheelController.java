@@ -11,7 +11,7 @@ public class SpinTheWheelController {
     }
 
     public void getAll(Context ctx){
-        ctx.render("stw/index.html");
+        ctx.render("stw/signup.html");
     }
 
 

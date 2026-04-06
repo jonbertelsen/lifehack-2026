@@ -11,8 +11,13 @@ public class WaardleController {
     }
 
     public void getAll(Context ctx){
-        ctx.render("waardle/index.html");
+        ctx.render("waardle/.html");
     }
-
+    public void login(Context ctx){
+        ctx.render("waardle/login.html");
+    }
+    public void signup(Context ctx){
+        ctx.render("waardle/signup.html");
+    }
 
 }
