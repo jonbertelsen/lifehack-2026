@@ -29,9 +29,9 @@ public class Main {
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
     private static final String URL = "jdbc:postgresql://localhost:5432/%s?currentSchema=public";
-    private static final String DB = "waardle";
+    private static final String DBW = "waardle";
 
-    private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DB);
+    private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DBW);
 
     public static void main(String[] args) {
 
@@ -54,141 +54,6 @@ public class Main {
                     config.router.apiBuilder(routes.getRoutes());
                 })
                 .start(7070);
-
-        app.before(ctx -> checkSession(ctx));
-
-        app.post("/login", ctx -> handleLogin(ctx));
-        app.post("/signup", ctx -> handleSignup(ctx));
-        app.get("/logout", ctx -> handleLogout(ctx));
-
-        app.get("/me", ctx -> {
-            String username = ctx.sessionAttribute("user");
-
-            if (username == null) {
-                ctx.status(401).result("Not logged in");
-                return;
-            }
-
-            ctx.json(new UserResponse(username));
-        });
     }
-
-
-    private static void checkSession(io.javalin.http.Context ctx) {
-        String user = ctx.sessionAttribute("user");
-        String path = ctx.path();
-
-        if (path.equals("/login.html") || path.equals("/signup.html") ||
-                path.equals("/login") || path.equals("/signup") ||
-                path.equals("/me") ||
-                path.startsWith("/notes") ||
-                path.endsWith(".js") || path.endsWith(".css") ||
-                path.endsWith(".png") || path.endsWith(".jpg")) {
-            return;
-        }
-
-        if (user == null) {
-            ctx.redirect("/login.html");
-        }
-    }
-
-    private static void handleLogin(io.javalin.http.Context ctx) {
-
-        try {
-            User loginUser = ctx.bodyAsClass(User.class);
-
-            try (var conn = DB.getConnection()) {
-
-                var stmt = conn.prepareStatement(
-                        "SELECT password FROM users WHERE username = ?"
-                );
-
-                stmt.setString(1, loginUser.username);
-
-                var rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    String hashedPassword = rs.getString("password");
-
-                    if (org.mindrot.jbcrypt.BCrypt.checkpw(loginUser.password, hashedPassword)) {
-                        ctx.sessionAttribute("user", loginUser.username);
-                        ctx.result("Login success");
-                    } else {
-                        ctx.status(401).result("Forkert login");
-                    }
-                } else {
-                    ctx.status(401).result("Forkert login");
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ctx.status(500).result("Server error");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ctx.status(400).result("Invalid request");
-        }
-    }
-
-
-
-    private static void handleSignup(io.javalin.http.Context ctx) {
-
-        try {
-            User newUser = ctx.bodyAsClass(User.class);
-
-            if (newUser.username == null || newUser.username.isEmpty() ||
-                    newUser.password == null || newUser.password.isEmpty()) {
-
-                ctx.status(400).result("Ugyldigt input");
-                return;
-            }
-
-            try (var conn = DB.getConnection()) {
-
-                var checkStmt = conn.prepareStatement(
-                        "SELECT 1 FROM users WHERE username = ?"
-                );
-                checkStmt.setString(1, newUser.username);
-
-                var rs = checkStmt.executeQuery();
-
-                if (rs.next()) {
-                    ctx.status(400).result("Bruger findes allerede");
-                    return;
-                }
-
-                String hashedPassword = BCrypt.hashpw(newUser.password, BCrypt.gensalt());
-
-
-                var insertStmt = conn.prepareStatement(
-                        "INSERT INTO users (username, password) VALUES (?, ?)"
-                );
-
-                insertStmt.setString(1, newUser.username);
-                insertStmt.setString(2, hashedPassword);
-
-                insertStmt.executeUpdate();
-
-                System.out.println("Gemte bruger: " + newUser.username);
-                ctx.result("Bruger oprettet");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ctx.status(500).result("Database error");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ctx.status(400).result("Invalid request");
-        }
-    }
-
-    private static void handleLogout(io.javalin.http.Context ctx) {
-        ctx.req().getSession().invalidate();
-        ctx.redirect("/login.html");
-    }
-
 
 }
