@@ -7,7 +7,6 @@
     padding: 50px;
     gap: 10px;
 
-
 }
 
 #loginknap, #signupknap{
@@ -31,7 +30,7 @@
 
 nav {
     width: 100vw;
-    height: var(8vh);
+    height: 8vh;
     background: #e9ecef;
     display: flex;
     justify-content: center;
@@ -42,9 +41,16 @@ nav {
     background-size: contain;
     width: var(--avatar-nav-width);
     height: var(--nav-height);
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 #logo {
     text-align: center;
 }
+
