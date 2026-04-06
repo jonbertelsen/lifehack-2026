@@ -4,12 +4,13 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link href="../../public/css/waardle.css" th:href="@{/css/waardle.css}" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/waardle.css" rel="stylesheet">
 
 </head>
 
 <body>
+<script src="/javascript/script.js"></script>
 <header>
 
 <form class="login" method="post">
@@ -18,7 +19,7 @@
     <input type="text" name="username" placeholder="indtast brugernavn"/>
     <input type="password" name="password" placeholder="indtast dit kodeord"/>
 
-    <button type="submit" formaction="/login"> Log ind </button>
+    <button onclick="login()" type="submit" formaction="/login"> Log ind </button>
 
 </form>
 </body>

@@ -4,12 +4,13 @@
     <title>Start</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link href="../../public/css/waardle.css" th:href="@{/css/waardle.css}" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/waardle.css" rel="stylesheet">
 
 </head>
 
 <body>
+<script src="/javascript/script.js"></script>
 <header>
     <nav>
         <div class="left">
@@ -23,13 +24,9 @@
         </div>
     </nav>
 </header>
-
-
-
-<form class="startside" method="post">
-
-    <button type="submit" id="loginknap" formaction="/login"> Log ind </button>
-    <button type="submit" id="signupknap" formaction="/signup"> Opret bruger </button>
+<form class="startside">
+    <button onclick="goToLogin()" id="loginknap"> Log ind </button>
+    <button onclick="goToCreate()" id="signupknap"> Opret bruger </button>
     <a href="" > Fortsæt som gæst </a>
 </form>
 </body>

@@ -4,20 +4,20 @@
 <title>Signup</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link href="../../public/css/waardle.css" th:href="@{/css/waardle.css}" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/waardle.css" rel="stylesheet">
 
 </head>
 
 <body>
-
+<script src="/javascript/script.js"></script>
 
 <form class="signup" method="post">
     <h1> Opret bruger </h1>
     <input type="text" name="username" placeholder="indtast brugernavn"/>
     <input type="password" name="password" placeholder="indtast kodeord"/>
 
-    <button type="submit" formaction="/signup"> Opret bruger </button>
+    <button onclick="createUser()" type="submit" formaction="/signup"> Opret bruger </button>
 
 </form>
 

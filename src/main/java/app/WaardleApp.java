@@ -13,12 +13,20 @@ public class WaardleApp {
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add(staticFiles -> {
                 staticFiles.hostedPath = "/";
+                staticFiles.directory = "/public";
+                staticFiles.location = Location.CLASSPATH;
+            });
+
+            config.staticFiles.add(staticFiles -> {
+                staticFiles.hostedPath = "/";
                 staticFiles.directory = "/templates/waardle";
                 staticFiles.location = Location.CLASSPATH;
             });
         }).start(7000);
 
-        app.before(ctx -> checkSession(ctx));
+
+
+        //app.before(ctx -> checkSession(ctx));
 
         app.post("/login", ctx -> handleLogin(ctx));
         app.post("/signup", ctx -> handleSignup(ctx));
@@ -37,8 +45,7 @@ public class WaardleApp {
 
 
         }
-
-   private static void checkSession(io.javalin.http.Context ctx) {
+        private static void checkSession(io.javalin.http.Context ctx) {
         String user = ctx.sessionAttribute("user");
         String path = ctx.path();
 
@@ -55,6 +62,8 @@ public class WaardleApp {
             ctx.redirect("/login.html");
         }
     }
+
+
 
     private static void handleLogin(io.javalin.http.Context ctx) {
 
