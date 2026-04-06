@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Waardle</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-gap: 5px;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .green { background-color: #6aaa64; color: white; border-color: #6aaa64; }
+        .yellow { background-color: #c9b458; color: white; border-color: #c9b458; }
+        .gray { background-color: #787c7e; color: white; border-color: #787c7e; }
+    </style>
+</head>
+<body>
+
+<h1>Waardle</h1>
+
+<div id="grid"></div>
+
+<input type="text" id="guessInput" maxlength="5" placeholder="5 bogstaver">
+<button id="submitBtn">Gæt</button>
+
+<script>
+    const grid = document.getElementById('grid');
+    const input = document.getElementById('guessInput');
+    const button = document.getElementById('submitBtn');
+    const maxGuesses = 6;
+    const colorMap = { G: 'green', Y: 'yellow', B: 'gray' };
+    let attempts = 0;
+
+    async function makeGuess() {
+        const guess = input.value.toUpperCase().trim();
+        if (guess.length !== 5) {
+            alert('Indtast 5 bogstaver!');
+            return;
+        }
+
+        if (attempts >= maxGuesses) {
+            alert(`Game Over! Du har allerede brugt ${maxGuesses} gæt.`);
+            input.disabled = true;
+            button.disabled = true;
+            return;
+        }
+
+        try {
+            const res = await fetch('/guess', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ guess })
+            });
+
+            const data = await res.json();
+
+            if (data.gameOver) {
+                alert(`${data.message} Dagens ord var: ${data.dailyWord}`);
+                input.disabled = true;
+                button.disabled = true;
+                return;
+            }
+
+            data.result.split('').forEach((color, i) => {
+                const cell = document.createElement('div');
+                cell.classList.add('cell', colorMap[color] || 'gray');
+                cell.textContent = guess[i];
+                grid.appendChild(cell);
+            });
+
+            attempts++;
+            input.value = '';
+
+            if (data.won) {
+                alert(`Tillykke! Du gættede dagens ord: ${guess}`);
+                input.disabled = true;
+                button.disabled = true;
+                return;
+            }
+
+            if (attempts >= maxGuesses) {
+                alert(`Game Over! Du har brugt alle ${maxGuesses} gæt. Dagens ord var: ${data.dailyWord || 'ukendt'}`);
+                input.disabled = true;
+                button.disabled = true;
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert('Server error');
+        }
+    }
+
+    button.addEventListener('click', makeGuess);
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            makeGuess();
+        }
+    });
+</script>
+
+</body>
+</html>
