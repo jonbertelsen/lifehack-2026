@@ -14,7 +14,7 @@ public class WaardleController {
         ctx.render("waardle/.html");
     }
     public void login(Context ctx){
-        ctx.render("waardle/login.html");
+        ctx.render("waardle/startside.html");
     }
     public void signup(Context ctx){
         ctx.render("waardle/signup.html");
