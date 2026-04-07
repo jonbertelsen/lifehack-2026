@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultat</title>
     <link rel="stylesheet" href="/css/spin-styles.css">
 </head>
 <body>
 
-<div class="wrapper">
-    <section class="phone">
-        <div class="screen">
+<div class="container">
+    <div class="title">Resultat</div>
 
-            <div class="result-hero-box">
-                <h1 th:text="${result}">RESULTAT</h1>
-            </div>
+    <div class="result-box">
+        <span th:text="${result}">Resultat her</span>
+    </div>
 
-            <div class="bottom-buttons">
-                <a href="/stw" class="secondary-btn">TILBAGE</a>
-                <a href="/stw/again" class="secondary-btn">RUL IGEN</a>
-            </div>
+    <div class="btn-group">
+        <form action="/stw/result" method="post">
+            <input type="hidden" name="option1" th:value="${option1}">
+            <input type="hidden" name="option2" th:value="${option2}">
+            <input type="hidden" name="option3" th:value="${option3}">
+            <input type="hidden" name="option4" th:value="${option4}">
+            <input type="hidden" name="option5" th:value="${option5}">
+            <button type="submit" class="spin-btn">RUL IGEN</button>
+        </form>
 
-        </div>
-    </section>
+        <a href="/stw" class="back-btn">TILBAGE</a>
+    </div>
 </div>
 
 </body>
