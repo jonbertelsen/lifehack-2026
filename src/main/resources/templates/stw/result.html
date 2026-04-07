@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultat</title>
+    <link rel="stylesheet" href="/css/spin-styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="title">Resultat</div>
+
+    <div class="result-box">
+        <span th:text="${result}">Resultat her</span>
+    </div>
+
+    <div class="btn-group">
+        <form action="/stw/result" method="post">
+            <input type="hidden" name="option1" th:value="${option1}">
+            <input type="hidden" name="option2" th:value="${option2}">
+            <input type="hidden" name="option3" th:value="${option3}">
+            <input type="hidden" name="option4" th:value="${option4}">
+            <input type="hidden" name="option5" th:value="${option5}">
+            <button type="submit" class="spin-btn">RUL IGEN</button>
+        </form>
+
+        <a href="/stw" class="back-btn">TILBAGE</a>
+    </div>
+</div>
+
+</body>
+</html>

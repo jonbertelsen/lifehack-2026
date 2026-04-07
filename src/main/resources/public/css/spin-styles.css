@@ -1,0 +1,184 @@
+.apps-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 30px;
+}
+
+.app-card {
+    width: 220px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+.app-card img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.app-card p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.app-card:hover {
+    transform: scale(1.05);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.logo-box {
+    width: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.logo-box img {
+    width: 100%;
+    display: block;
+    border-radius: 22px;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 18px 20px;
+    font-size: 18px;
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.form-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-box input:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.spin-btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 22px;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #f97316);
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.35);
+}
+
+.spin-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(249, 115, 22, 0.45);
+}
+
+.spin-btn:active {
+    transform: scale(0.98);
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+}
+
+.spin-btn {
+    display: block;
+    width: 320px;
+    margin: 20px auto 0;
+    padding: 22px;
+    font-size: 36px;
+    font-weight: 800;
+    color: #111827;
+    background: linear-gradient(135deg, #fde68a, #fbbf24, #f59e0b);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.35);
+    transition: 0.25s ease;
+}
+
+.result-box {
+    margin: 30px 0;
+    padding: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fbbf24;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.back-btn {
+    display: block;
+    text-align: center;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 18px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.2);
+}

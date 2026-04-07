@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="da">
 <head>
-<title>Frontpage</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link href="../public/css/stw.css" th:href="@{/css/stw.css}" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin App</title>
+    <link rel="stylesheet" href="/css/spin-styles.css">
 </head>
-
 <body>
-<h1>Spin the wheel</h1>
+
+<div class="container">
+    <div class="logo-box">
+        <img th:src="@{/images/stw/stw-logo.jpg}" alt="Spin The Wheel logo">
+    </div>
+
+    <div class="title">Indtast valgmuligheder</div>
+
+    <form action="/stw/result" method="post" class="form-box">
+        <input type="text" name="option1" placeholder="Valg 1">
+        <input type="text" name="option2" placeholder="Valg 2">
+        <input type="text" name="option3" placeholder="Valg 3">
+        <input type="text" name="option4" placeholder="Valg 4">
+        <input type="text" name="option5" placeholder="Valg 5">
+
+        <button type="submit" class="spin-btn">SPIN</button>
+    </form>
+</div>
+
+
 </body>
 </html>
